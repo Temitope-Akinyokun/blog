@@ -44,3 +44,10 @@
     color: #bc891a;
     opacity: .7;
 }
+
+.fa-pen {
+    color: #bc891a;
+    font-size: 2rem;
+    padding-left: 5px;
+    cursor: pointer;
+}
