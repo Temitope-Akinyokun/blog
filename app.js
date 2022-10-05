@@ -109,17 +109,6 @@ app.get('/posts/:entry', (req, res) => {
 
 })
 
-// app.get('/post', (req, res) => {
-
-//   Post.find((err, posts) => {
-//     res.render('post', {
-//       title: posts.postTitle,
-//       content: posts.postEntry
-//     })
-//   });
-
-// })
-
 
 app.listen(process.env.PORT || 3000, function () {
   console.log("Server started on port 3000");
