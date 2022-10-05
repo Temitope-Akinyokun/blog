@@ -68,16 +68,20 @@ app.post('/compose', (req, res) => {
   const postTitle = req.body.postTitle;
   const postEntry = req.body.postEntry;
 
-  const newPost = new Post({
-    title: postTitle,
-    content: postEntry
-  });
-
-  newPost.save((err) => {
-    if(!err) {
-      res.redirect('/');
-    }
-  });
+  if (postEntry == '') {
+    console.log("Empty string");
+    res.redirect('/compose');
+  } else {
+    const newPost = new Post({
+      title: postTitle,
+      content: postEntry
+    });
+    newPost.save((err) => {
+      if (!err) {
+        res.redirect('/');
+      }
+    });
+  }
 
 })
 
