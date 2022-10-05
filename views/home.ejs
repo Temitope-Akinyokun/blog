@@ -5,6 +5,9 @@
         <%= homeStartingContent %>
     </p>
 
+    <div class="compose"><a href="/compose"><i class="fa-solid fa-pen"></i></a></div>
+
+
     <% posts.forEach((post)=> { %>
         <h3>
             <%= post.title %>
@@ -19,13 +22,12 @@
                 <p style="display: inline;">
                     <%= post.content.slice(0, 100) + '...' %>
                 </p>
-                <a class="read-more-link" href="/posts/<%= post.title %>" >Read More</a>
+                <a class="read-more-link" href="/posts/<%= post.title %>">Read More</a>
                 <% } %>
 
 
                     <% }) %>
 
-                    <div class="compose"><a href="/compose"><i class="fa-solid fa-pen"></i></a></div>
 
 
                         <%- include('partials/footer'); -%>
