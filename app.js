@@ -114,6 +114,8 @@ app.get('/posts/:entry', (req, res) => {
 
 })
 
+//DELETE ROUTE
+
 app.post('/delete', (req, res) => {
 
   const btnDelete = req.body.id;
