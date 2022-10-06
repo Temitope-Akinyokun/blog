@@ -1,9 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
-//const { title } = require("process");
 const mongoose = require('mongoose');
 const _ = require('lodash');
+
+const dotenv = require('dotenv');
+dotenv.config();
+const database = process.env.DATABASE;
 
 
 const homeStartingContent = "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
@@ -12,7 +15,7 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 let pathParam;
 
-mongoose.connect('mongodb+srv://Temitope2000:Klaroline1.@cluster0.af7d8h0.mongodb.net/blogDB');
+mongoose.connect(database);
 
 const postsSchema = {
   title: String,
@@ -72,6 +75,7 @@ app.post('/compose', (req, res) => {
     console.log("Empty string");
     res.redirect('/compose');
   } else {
+
     const newPost = new Post({
       title: postTitle,
       content: postEntry
@@ -99,7 +103,8 @@ app.get('/posts/:entry', (req, res) => {
         console.log('Match  found!');
         res.render('post', {
           title: post.title,
-          content: post.content
+          content: post.content,
+          postID: post._id
         })
 
       }
@@ -109,6 +114,18 @@ app.get('/posts/:entry', (req, res) => {
 
 })
 
+app.post('/delete', (req, res) => {
+
+  const btnDelete = req.body.id;
+  console.log(btnDelete);
+  Post.findByIdAndDelete(btnDelete, (err) => {
+    if (!err) {
+      console.log("Successfully deleted!");
+      res.redirect('/');
+    }
+  })
+
+})
 
 app.listen(process.env.PORT || 3000, function () {
   console.log("Server started on port 3000");

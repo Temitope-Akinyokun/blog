@@ -1,7 +1,20 @@
 <%- include('partials/header'); -%>
 
-<h1> <%= title %> </h1>
-<p> <%= content %> </p>
+    <h1>
+        <%= title %>
+    </h1>
+    <p>
+        <%= content %>
+    </p>
+
+    <p style="display: none;" contenteditable="true">
+        <%= postID %>
+    </p>
+
+    <form action="/delete" method="post">
+        <input type="hidden" name="id" value="<%= postID %>">
+        <button class="delete-btn btn" type="submit"><i class="fa-solid fa-trash"></i></button>
+    </form>
 
 
-<%- include('partials/footer'); -%>
+    <%- include('partials/footer'); -%>

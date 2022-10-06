@@ -54,6 +54,18 @@
     cursor: pointer;
 }
 
+.fa-trash {
+    color: red;
+    font-size: 2rem;
+    box-shadow: red 0px 5px 15px;
+}
+
+.fa-pen-to-square {
+    color: green;
+    font-size: 1.8rem;
+    box-shadow: green 0px 5px 15px;
+}
+
 .compose {
     width: 60px;
     padding: 5px;
@@ -69,4 +81,12 @@
     background-color: #bc891a;
     border-color: #88600a;
     opacity: .8;
+}
+
+.delete-btn {
+    border-style: none;
+}
+
+.update-btn {
+    border-style: none;
 }
